@@ -10,6 +10,9 @@ const images = [
 const section = document.getElementById('carousel')
 const upButton = document.getElementById('up')
 const downButton = document.getElementById('down')
+const togglePlay = document.getElementById('play')
+let play = false
+let autoPlay
 
 // creo la variabile a cui appoggiare gli indici dell'array
 let i = 0
@@ -35,6 +38,25 @@ upButton.addEventListener('click', function () {
     }
     imgCarousel(images[i].image, images[i].title, images[i].text)
 })
+
+togglePlay.addEventListener('click', function () {
+    if (play == false) {
+        play = true
+        togglePlay.innerHTML = 'STOP'
+        autoPlay = setInterval(function () {
+            i++
+            if (i >= images.length) {
+                i = 0
+            }
+            imgCarousel(images[i].image, images[i].title, images[i].text)
+        }, 3000)
+    } else {
+        play = false
+        togglePlay.innerHTML = 'PLAY'
+        clearInterval(autoPlay)
+    }
+})
+
 
 // creo la funzione che mi inserisce nella section l'immagine con le descrizioni in base all'indice dell'array [i]
 function imgCarousel(img, tit, tex) {
