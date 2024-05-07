@@ -11,6 +11,8 @@ const section = document.getElementById('carousel')
 const upButton = document.getElementById('up')
 const downButton = document.getElementById('down')
 const togglePlay = document.getElementById('play')
+
+// creo le variabili che mi serviranno per far funzionare l'intervallo
 let play = false
 let autoPlay
 
@@ -39,6 +41,7 @@ upButton.addEventListener('click', function () {
     imgCarousel(images[i].image, images[i].title, images[i].text)
 })
 
+// creo l'evento per il bottone play con l'intervallo per muovere le immagini ogni 3 secondi
 togglePlay.addEventListener('click', function () {
     if (play == false) {
         play = true
